@@ -258,7 +258,12 @@ export class TypeormUtilsService<E extends Entity> {
             continue;
           }
 
-          const expression = OperandsMapExpression[operand].replace(
+          let _operand = operand
+          if (operand === FilterOperand.like) {
+              _operand = this._entityMetadata.connection.options.type === 'mysql'? FilterOperand.like : FilterOperand.ilike
+          }
+
+          const expression = OperandsMapExpression[_operand].replace(
             EXPRESSION,
             paramsName
           );

@@ -10,6 +10,7 @@ export enum FilterOperand {
   eq = 'eq',
   gt = 'gt',
   gte = 'gte',
+  ilike = 'ilike',
   like = 'like',
   lt = 'lt',
   lte = 'lte',
